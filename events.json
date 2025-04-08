@@ -1,0 +1,17 @@
+[
+    { 
+        "date": "2025-04-10", 
+        "location": "Paris", 
+        "logo_url": "https://placehold.co/600x400?text=JS"
+    },
+    { 
+        "date": "2025-04-15", 
+        "location": "Lyon", 
+        "logo_url": "https://placehold.co/600x400?text=WD"
+    },
+    { 
+        "date": "2025-04-20", 
+        "location": "Marseille", 
+        "logo_url": "https://placehold.co/600x400?text=Hack"
+    }
+]
