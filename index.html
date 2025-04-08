@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecture de events.json</title>
+    <title>Devops days locations</title>
     <style>
         /* Style pour les événements */
         .event-item {
@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <h1>Liste des événements</h1>
+    <h1>Devops days locations</h1>
     <ul id="eventList"></ul>
 
     <script>
@@ -33,12 +33,12 @@
                     }
                     return response.json();
                 })
-                .then(data => {
+                .then(events => {
                     // Sélection de l'élément HTML où afficher les données
                     const eventList = document.getElementById('eventList');
 
                     // Parcourir les données JSON et les afficher
-                    data["data"].forEach(event => {
+                    events.data.forEach(event => {
                         const listItem = document.createElement('li');
                         listItem.classList.add('event-item');
 
@@ -51,7 +51,7 @@
 
                         // Ajouter le nom, la date et le lieu
                         const textContent = document.createElement('p');
-                        textContent.textContent = `Date: ${event.date}, Lieu: ${event.location}`;
+                        textContent.textContent = `Location: ${event.location}, Date: ${event.date}`;
                         listItem.appendChild(textContent);
 
                         // Ajouter l'élément à la liste
