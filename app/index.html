@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devops days locations</title>
+    <style>
+        /* Style pour les événements */
+        .event-item {
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+        .event-logo {
+            width: 100px;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Devops days locations</h1>
+    <ul id="eventList"></ul>
+
+    <script>
+        // Fonction pour charger et afficher les données JSON
+        function loadJSON() {
+            // Utilisation de fetch pour récupérer le fichier JSON
+            fetch('events.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors du chargement du fichier JSON');
+                    }
+                    return response.json();
+                })
+                .then(events => {
+                    // Sélection de l'élément HTML où afficher les données
+                    const eventList = document.getElementById('eventList');
+
+                    // Parcourir les données JSON et les afficher
+                    events.data.forEach(event => {
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('event-item');
+
+                        // Ajouter le logo
+                        const logo = document.createElement('img');
+                        logo.src = event.logo_url;
+                        logo.alt = `Logo de ${event.name}`;
+                        logo.classList.add('event-logo');
+                        listItem.appendChild(logo);
+
+                        // Ajouter le nom, la date et le lieu
+                        const textContent = document.createElement('p');
+                        textContent.textContent = `Location: ${event.location}, Date: ${event.date}`;
+                        listItem.appendChild(textContent);
+
+                        // Ajouter l'élément à la liste
+                        eventList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                });
+        }
+
+        // Appeler la fonction pour charger le JSON au chargement de la page
+        loadJSON();
+    </script>
+</body>
+</html>
