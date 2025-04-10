@@ -1,0 +1,13 @@
+name: Build Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  display-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Message
+        run: echo "Build image"

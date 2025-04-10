@@ -1,0 +1,24 @@
+services:
+  app:
+    image: php-custom
+    build:
+      context: .
+      dockerfile: php.Dockerfile
+    ports:
+      - 8080:80
+    networks:
+      - mon-reseau-site
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MARIADB_ROOT_PASSWORD=secretsuper
+      - MARIADB_DATABASE=promocesi
+      - MARIADB_USER=johnny
+      - MARIADB_PASSWORD=secret
+    volumes:
+      - ./initdb/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+    - mon-reseau-site
+networks:
+  mon-reseau-site:
+    driver: bridge
