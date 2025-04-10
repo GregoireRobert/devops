@@ -1,4 +1,3 @@
-ARG BASE_IMAGE
-ARG DOCUMENT_ROOT_PATH
-FROM ${BASE_IMAGE}:alpine
-COPY ./app/ ${DOCUMENT_ROOT_PATH} 
+FROM php:7.4-apache
+COPY ./app_2/ /var/www/html/
+RUN docker-php-ext-install -j$(nproc) mysqli
