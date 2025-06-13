@@ -1,9 +1,7 @@
 services:
   app:
-    image: php-custom
-    build:
-      context: .
-      dockerfile: php.Dockerfile
+    image: ghcr.io/gregoirerobert/php-custom:0.1
+
     ports:
       - 8080:80
     networks:
@@ -19,6 +17,8 @@ services:
       - ./initdb/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
     - mon-reseau-site
+
+
 networks:
   mon-reseau-site:
     driver: bridge
