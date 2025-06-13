@@ -1,4 +1,2 @@
-ARG BASE_IMAGE
-ARG DOCUMENT_ROOT_PATH
-FROM ${BASE_IMAGE}:alpine
-COPY ./app/ ${DOCUMENT_ROOT_PATH} 
+FROM ubuntu/apache2
+COPY ./app/ /var/www/html/
